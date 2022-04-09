@@ -34,6 +34,8 @@ def send_data(data="110010001110100000010100"):
         else:
             send_one()
 
+    wiringpi.pwmWrite(OUTPUT_PIN,1)
+    time.sleep(T/MICRO)
     wiringpi.pwmWrite(OUTPUT_PIN,0)
     return
 
