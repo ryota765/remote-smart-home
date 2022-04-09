@@ -34,9 +34,9 @@ def main():
 
         if (2500 < H < 4000) and (1200 < L < 2000):
           print('start')
-        elif (250 < H < 550) and (250 < L < 500):
+        elif (250 < H < 600) and (250 < L < 600):
           print('0', end='')
-        elif (250 < H < 550) and (800 < L < 1300):
+        elif (250 < H < 600) and (800 < L < 1400):
           print('1', end='')
         else:
           print('\n')
