@@ -6,9 +6,10 @@ OUTPUT_PIN = 18
 FREQ = 38e3
 RANGE = 3
 CLOCK = int(19.2e6/FREQ/RANGE) 
-T = 370
+T = 350
 
 MICRO = 1000000
+REPEAT = 4
 
 def send_zero():
     wiringpi.pwmWrite(OUTPUT_PIN, 1)
@@ -48,11 +49,9 @@ def main():
 
     time.sleep(1)
 
-    send_data()
-
-    time.sleep(1)
-
-    send_data()
+    for _ in range(REPEAT):
+        send_data()
+        time.sleep(8000/MICRO)
 
 if __name__ == '__main__':
     main()
