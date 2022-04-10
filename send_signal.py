@@ -64,7 +64,7 @@ def main(data):
 
 if __name__ == "__main__":
     json_open = open(OPTION_FILE, "r")
-    options = json.load(json_open)
+    options_dict = json.load(json_open)
 
     args = sys.argv
     if len(args) < 2:
@@ -72,8 +72,8 @@ if __name__ == "__main__":
         sys.exit(1)
 
     data_type = args[1]
-    if data_type not in options:
+    if data_type not in options_dict:
         print("Option is not available")
         sys.exit(1)
 
-    main(options[data_type])
+    main(options_dict[data_type])

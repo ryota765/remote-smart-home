@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 from dotenv import load_dotenv
@@ -21,7 +22,7 @@ line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
 json_open = open(OPTION_FILE, "r")
-options = json.load(json_open)
+options_dict = json.load(json_open)
 
 
 @app.route("/callback", methods=["POST"])
@@ -33,22 +34,22 @@ def callback():
         handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
-    return
+    return 'OK'
 
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
 
-    if message in options:
-        send_signal.main(options["message"])
+    if message in options_dict:
+        send_signal.main(options_dict[message])
 
         line_bot_api.reply_message(event.reply_token, TextSendMessage("Done!"))
 
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(f"Available options are: {list(options.keys())}"),
+            TextSendMessage(f"Available options are: {list(options_dict.keys())}"),
         )
 
 
