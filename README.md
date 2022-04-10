@@ -4,8 +4,22 @@ Hack infra-red remote controllers at home.
 
 ## Setup
 
+python libraries
 ```
-sudo pip3 install wiringpi
+$ sudo pip3 install wiringpi
+$ sudo pip3 install python-dotenv
+$ sudo pip3 install line-bot-sdk
+```
+
+ngrok
+```
+$ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
+$ unzip ngrok-stable-linux-arm.zip
+$ ngrok version
+> ngrok version 2.3.40
+
+$ ngrok authtoken ${myToken}
+$ ngrok http 8080
 ```
 
 ## Detail
@@ -61,3 +75,4 @@ $ sudo python3 send-signal.py dark
 - https://paltee.net/archives/180
 - https://www.zumid.net/entry/raspberry-pi-irled/
 - http://elm-chan.org/docs/ir_format.html
+- https://mayumega.site/raspi/linebot_raspi_pic/
